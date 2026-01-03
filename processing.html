@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YAS Tigo Pesa – Inachakata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="card center">
+
+    <div class="spinner"></div>
+
+    <h2 class="title">Inachakata Tafadhali Subiri</h2>
+
+    <p class="subtitle">
+      Ombi lako linachakatwa. Tafadhali subiri kidogo huku tukikamilisha uthibitisho.
+    </p>
+
+    <p class="countdown">
+      Inarudi baada ya <span id="seconds">10</span> sekunde...
+    </p>
+
+  </div>
+</div>
+
+<script>
+let time = 10;
+const sec = document.getElementById("seconds");
+
+const timer = setInterval(() => {
+  time--;
+  sec.textContent = time;
+  if(time <= 0){
+    clearInterval(timer);
+    window.location.href = "index.html";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>

